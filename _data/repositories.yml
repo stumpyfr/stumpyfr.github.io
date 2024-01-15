@@ -1,0 +1,18 @@
+# perso
+
+perso:
+  - repo: stumpyfr/rstatsd
+    description: R Client library for StatsD
+
+family:
+# freier
+  - repo: freierfr/global
+    description: Family infrastructure, deployed with Terraform
+
+  - repo: freierfr/marvin_telegram
+    description: A Telegram bot that integrates with OpenAI's official ChatGPT and DALL·E APIs to provide answers. Ready to use with minimal configuration required.
+
+contrib:
+  # open-source / contrib
+  - repo: udger/udger
+    description: Udger local parser for Go

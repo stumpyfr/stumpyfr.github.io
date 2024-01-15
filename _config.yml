@@ -34,7 +34,9 @@ plugins:
 
 header_pages:
   - index.md
-  # - about.md
+  - repositories.md
+  - articles.md
+  - podcasts.md
 
 footer: 'Who needs more than 80 columns?'
 

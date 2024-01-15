@@ -16,5 +16,6 @@ Based in Paris and working internationally with [Boston Consulting Group - X](ht
 
 - [LinkedIn](https://www.linkedin.com/in/nielsfreier/){:target="_blank"}
 - [Github](https://github.com/stumpyfr){:target="_blank"}
+- ![](/assets/email.png)
 
-<!-- ## Publications -->
+## Publications
