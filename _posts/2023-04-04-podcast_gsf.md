@@ -16,6 +16,3 @@ As software engineers, you'll gain valuable knowledge on how green code and sust
 
 Original post: [https://gotopia.tech/articles/227/expert-talk-sustainable-software-in-practice](https://gotopia.tech/articles/227/expert-talk-sustainable-software-in-practice)
 
-{% include youtubePlayer.html id=page.youtube_id %}
-
-
