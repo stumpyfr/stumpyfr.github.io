@@ -4,6 +4,9 @@ perso:
   - repo: stumpyfr/rstatsd
     description: R Client library for StatsD
 
+  - repo: stumpyfr/node-pastebin
+    description: A simple node lib to post to Pastebin
+
 family:
 # freier
   - repo: freierfr/global
