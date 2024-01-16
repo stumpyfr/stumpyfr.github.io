@@ -12,10 +12,10 @@ I am a Data/Platform/Solution Architect by specialization, a software engineer b
 Based in Paris and working internationally with [Boston Consulting Group - X](https://www.bcg.com/x), developing, for and with our clients, advanced analytics systems at scale.
 
 
-## Contact me
+# Contact me
 
 - [LinkedIn](https://www.linkedin.com/in/nielsfreier/){:target="_blank"}
 - [Github](https://github.com/stumpyfr){:target="_blank"}
-- ![](/assets/email.png)
+- ![email](/assets/email.png)
 
-## Publications
+# Publications
