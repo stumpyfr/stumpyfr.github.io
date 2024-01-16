@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+<meta http-equiv="Content-Security-Policy" content="script-src https://cdn.heapanalytics.com https://heapanalytics.com 'unsafe-inline' 'unsafe-eval'; img-src 'self' https://heapanalytics.com; style-src https://heapanalytics.com fonts.googleapis.com 'self'; connect-src https://heapanalytics.com; font-src https://heapanalytics.com fonts.gstatic.com;">
+<meta http-equiv="X-XSS-Protection"  content="1;mode=block" always>
+<meta http-equiv="Referrer-Policy" content="no-referrer, strict-origin-when-cross-origin">
+
+  {%- include head.html -%}
+
+  <body>
+    <div class="container">
+
+      {%- include header.html -%}
+
+    <main>
+      {{ content }}
+    </main>
+
+    {%- include footer.html -%}
+
+    </div>
+  </body>
+</html>
