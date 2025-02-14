@@ -7,11 +7,11 @@ title: /Home
 permalink: /
 ---
 
-# Welcome to my personal website
+# Welcome to my website
 
-I am a Data/Platform/Solution Architect by specialization, a software engineer by profession, and an engineer at heart.
+I am a Data/Platform/Solution Architect by specialization, a software engineer by training, and an engineer at heart.
 
-Based in Paris and working internationally with [Boston Consulting Group - X](https://www.bcg.com/x), developing, for and with our clients, advanced analytics systems at scale.
+Based in Paris and working locally and internationally with clients as an independent consultant.
 
 
 ## Contact me
