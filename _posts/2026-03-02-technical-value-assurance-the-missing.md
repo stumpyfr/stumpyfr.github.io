@@ -1,6 +1,6 @@
 ---
 layout: article
-title: Technical Value Assurance: The Missing Function in Enterprise Engineering
+title: Technical Value Assurance, The Missing Function in Enterprise Engineering
 tags: [Article, Business, Assurance, PMO, Engineering]
 link: [https://nielsfreier.substack.com/p/i-let-an-ai-agent-read-my-jira-tickets](https://nielsfreier.substack.com/p/technical-value-assurance-the-missing)
 ---
