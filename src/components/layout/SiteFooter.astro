@@ -1,0 +1,87 @@
+---
+import { externalLinkAttrs, externalNavLinks, navLinks, siteConfig } from '@/config/site';
+import LogoMark from '@/components/ui/LogoMark.astro';
+---
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="brand">
+      <LogoMark />
+      <p>Architecture - Data - AI - Transformation</p>
+    </div>
+    <nav aria-label="Footer pages">
+      <h2>Pages</h2>
+      {navLinks.map((link) => <a href={link.href}>{link.label}</a>)}
+    </nav>
+    <nav aria-label="Footer external links">
+      <h2>Elsewhere</h2>
+      {externalNavLinks.map((link) => (
+        <a href={link.href} {...externalLinkAttrs()}>{link.label}</a>
+      ))}
+      <a href={siteConfig.links.linkedin} {...externalLinkAttrs()}>LinkedIn</a>
+      <a href={siteConfig.links.github} {...externalLinkAttrs()}>GitHub</a>
+    </nav>
+  </div>
+  <div class="container copyright">
+    <span>© {new Date().getFullYear()} Niels Freier. All rights reserved.</span>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    border-top: 1px solid var(--color-border);
+    padding-block: 56px 28px;
+    background: rgba(11, 16, 32, 0.72);
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: minmax(260px, 1.4fr) repeat(2, minmax(160px, 0.5fr));
+    gap: 2rem;
+  }
+
+  .brand {
+    display: grid;
+    align-content: start;
+    gap: 1rem;
+  }
+
+  p,
+  .copyright {
+    color: var(--color-fog);
+  }
+
+  nav {
+    display: grid;
+    align-content: start;
+    gap: 0.55rem;
+  }
+
+  h2 {
+    margin: 0 0 0.4rem;
+    color: var(--color-paper);
+    font-size: 0.82rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  a {
+    color: var(--color-fog);
+    font-weight: 700;
+  }
+
+  a:hover {
+    color: var(--color-electric-cyan);
+  }
+
+  .copyright {
+    margin-top: 2.5rem;
+    font-size: 0.88rem;
+  }
+
+  @media (max-width: 760px) {
+    .footer-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

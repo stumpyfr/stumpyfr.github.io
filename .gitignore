@@ -1,5 +1,28 @@
+# Build output
+dist/
+.astro/
 
-# Beads / Dolt files (added by bd init)
+# Dependencies
+node_modules/
+
+# Env
+.env
+.env.*
+!.env.example
+
+# macOS
+.DS_Store
+
+# Editor
+.claude/
+
+# Beads / Dolt
 .dolt/
 *.db
 .beads-credential-key
+.beads/
+
+# Scaffold docs (generated, not source)
+AGENTS.md
+ASSET_MANIFEST.md
+IMPLEMENTATION_SPEC.md

@@ -1,0 +1,72 @@
+---
+import Button from './Button.astro';
+
+interface Props {
+  title: string;
+  copy: string;
+  href: string;
+  accent?: 'gold' | 'blue' | 'cyan';
+  icon?: string;
+}
+
+const { title, copy, href, accent = 'cyan', icon = '+' } = Astro.props;
+---
+
+<article class:list={['icon-card', 'surface', 'texture', accent]}>
+  <div class="icon" aria-hidden="true">{icon}</div>
+  <h3>{title}</h3>
+  <p>{copy}</p>
+  <Button href={href} variant="ghost">Explore</Button>
+</article>
+
+<style>
+  .icon-card {
+    display: grid;
+    min-height: 260px;
+    align-content: start;
+    gap: 1rem;
+    border-radius: 24px;
+    padding: 1.35rem;
+    transition: transform 180ms ease, border-color 180ms ease;
+  }
+
+  .icon-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent);
+  }
+
+  .icon {
+    display: grid;
+    width: 42px;
+    height: 42px;
+    place-items: center;
+    border-radius: 13px;
+    border: 1px solid color-mix(in srgb, var(--accent) 52%, transparent);
+    color: var(--accent);
+    background: color-mix(in srgb, var(--accent) 12%, transparent);
+    font-size: 1.1rem;
+  }
+
+  h3 {
+    margin: 0;
+    color: var(--color-paper);
+    font-size: 1.22rem;
+  }
+
+  p {
+    margin: 0;
+    color: var(--color-fog);
+  }
+
+  .gold {
+    --accent: var(--color-muted-gold);
+  }
+
+  .blue {
+    --accent: var(--color-signal-blue);
+  }
+
+  .cyan {
+    --accent: var(--color-electric-cyan);
+  }
+</style>

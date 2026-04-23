@@ -1,0 +1,95 @@
+---
+import { getCollection } from 'astro:content';
+import PageHero from '@/components/sections/PageHero.astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { externalLinkAttrs, siteConfig } from '@/config/site';
+
+const projects = await getCollection('projects');
+---
+
+<BaseLayout title="Projects" canonicalPath="/projects">
+  <PageHero
+    title="Projects"
+    copy="Selected initiatives, advisory work, and experiments across architecture, platforms, AI, and transformation."
+    image={siteConfig.assets.projects}
+    alt="Abstract landscape visual representing selected projects and systems."
+  />
+
+  <section class="section">
+    <div class="container project-grid">
+      {projects.map((project) => (
+        <article class="project-card surface texture">
+          <p class="eyebrow">{project.data.group}</p>
+          <h2 class="serif">{project.data.title}</h2>
+          <p>{project.data.description}</p>
+          {project.data.links.length > 0 && (
+            <div class="links">
+              {project.data.links.map((link) => (
+                <a href={link.href} {...externalLinkAttrs()}>{link.label}</a>
+              ))}
+            </div>
+          )}
+        </article>
+      ))}
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .project-card {
+    min-height: 310px;
+    border-radius: 24px;
+    padding: 1.4rem;
+  }
+
+  h2 {
+    margin: 0.8rem 0 0;
+    color: var(--color-paper);
+    font-size: clamp(1.2rem, 2vw, 1.8rem);
+    line-height: 0.96;
+  }
+
+  p:not(.eyebrow) {
+    margin: 1rem 0 0;
+    color: var(--color-fog);
+  }
+
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 0;
+    margin-top: 1.2rem;
+  }
+
+  .links a + a::before {
+    content: "·";
+    margin-inline: 0.5rem;
+    color: var(--color-border);
+    font-weight: 400;
+  }
+
+  a {
+    color: var(--color-electric-cyan);
+    font-weight: 800;
+  }
+
+  @media (max-width: 940px) {
+    .project-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 620px) {
+    .project-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

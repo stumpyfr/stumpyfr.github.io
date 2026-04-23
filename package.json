@@ -1,0 +1,23 @@
+{
+  "name": "niels-freier-personal-site",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/check": "latest",
+    "@astrojs/mdx": "latest",
+    "@astrojs/sitemap": "latest",
+    "@tailwindcss/vite": "latest",
+    "astro": "latest",
+    "sharp": "latest",
+    "tailwindcss": "latest",
+    "typescript": "5.9.3"
+  },
+  "devDependencies": {}
+}

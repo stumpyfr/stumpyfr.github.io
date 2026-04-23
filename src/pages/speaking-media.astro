@@ -1,0 +1,117 @@
+---
+import { getCollection } from 'astro:content';
+import PageHero from '@/components/sections/PageHero.astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { externalLinkAttrs, siteConfig } from '@/config/site';
+
+const entries = (await getCollection('speaking-media')).sort(
+  (a, b) => (b.data.year ?? 0) - (a.data.year ?? 0)
+);
+---
+
+<BaseLayout title="Speaking & Media" canonicalPath="/speaking-media">
+  <PageHero
+    eyebrow="Speaking & Media"
+    title="Speaking & Media"
+    copy="Selected talks, interviews, conversations, and expert commentary."
+    image={siteConfig.assets.speakingMedia}
+    alt="Abstract stage visual used for speaking and media."
+  />
+
+  <section class="section">
+    <div class="container list">
+      {entries.map((entry) => (
+        <article class="media-card surface">
+          <div>
+            <p class="meta">
+              {entry.data.type}
+              {entry.data.venue && <span> / {entry.data.venue}</span>}
+              {entry.data.year && <span> / {entry.data.year}</span>}
+            </p>
+            <h2>{entry.data.title}</h2>
+            <p>{entry.data.description}</p>
+          </div>
+          {entry.data.links.length > 0 && (
+            <div class="links">
+              {entry.data.links.map((link) => (
+                <a href={link.href} {...externalLinkAttrs()}>{link.label}</a>
+              ))}
+            </div>
+          )}
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .list {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .media-card {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 1.5rem;
+    align-items: center;
+    border-radius: 24px;
+    padding: clamp(1.25rem, 3vw, 2rem);
+  }
+
+  .meta {
+    margin: 0 0 0.65rem;
+    color: var(--color-electric-cyan);
+    font-size: 0.76rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  h2 {
+    margin: 0;
+    color: var(--color-paper);
+    font-size: clamp(1.4rem, 3vw, 2.4rem);
+    line-height: 1.05;
+  }
+
+  .media-card p:not(.meta) {
+    max-width: 76ch;
+    margin: 0.8rem 0 0;
+    color: var(--color-fog);
+  }
+
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 0.75rem;
+  }
+
+  a {
+    display: inline-flex;
+    min-height: 42px;
+    align-items: center;
+    border: 1px solid var(--color-border-strong);
+    border-radius: 14px;
+    padding: 0.55rem 0.8rem;
+    color: var(--color-paper);
+    font-weight: 800;
+    background: rgba(229, 231, 235, 0.06);
+  }
+
+  a:hover {
+    border-color: rgba(34, 211, 238, 0.45);
+    color: var(--color-electric-cyan);
+  }
+
+  @media (max-width: 760px) {
+    .media-card {
+      grid-template-columns: 1fr;
+    }
+
+    .links {
+      justify-content: flex-start;
+    }
+  }
+</style>

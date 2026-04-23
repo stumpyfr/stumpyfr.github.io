@@ -1,0 +1,32 @@
+---
+import { externalLinkAttrs, siteConfig } from '@/config/site';
+
+const links = [
+  { label: 'LinkedIn', href: siteConfig.links.linkedin },
+  { label: 'GitHub', href: siteConfig.links.github },
+];
+---
+
+<div class="social-links">
+  {links.map((link) => (
+    <a href={link.href} {...externalLinkAttrs()}>{link.label}</a>
+  ))}
+</div>
+
+<style>
+  .social-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+  }
+
+  a {
+    color: var(--color-fog);
+    font-weight: 700;
+    transition: color 180ms ease;
+  }
+
+  a:hover {
+    color: var(--color-electric-cyan);
+  }
+</style>

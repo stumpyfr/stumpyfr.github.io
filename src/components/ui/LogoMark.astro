@@ -1,0 +1,61 @@
+---
+import { siteConfig } from '@/config/site';
+
+interface Props {
+  compact?: boolean;
+}
+
+const { compact = false } = Astro.props;
+---
+
+<a class:list={['logo', { compact }]} href="/" aria-label="Niels Freier home">
+  <span class="mark">
+    <img src={siteConfig.assets.brandMark} alt="" width="76" height="62" loading="eager" />
+  </span>
+  {!compact && <span class="divider" aria-hidden="true"></span>}
+  {!compact && <span class="name">Niels Freier</span>}
+</a>
+
+<style>
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.82rem;
+    min-width: 0;
+    color: var(--color-paper);
+    font-weight: 800;
+  }
+
+  .mark {
+    display: grid;
+    width: 42px;
+    height: 42px;
+    place-items: center;
+    overflow: hidden;
+    border: 1px solid var(--color-border-strong);
+    border-radius: 12px;
+    background: rgba(11, 16, 32, 0.86);
+  }
+
+  img {
+    width: 36px;
+    height: auto;
+  }
+
+  .divider {
+    width: 1px;
+    height: 28px;
+    background: var(--color-muted-gold);
+    opacity: 0.86;
+  }
+
+  .name {
+    white-space: nowrap;
+  }
+
+  .compact .mark {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+  }
+</style>

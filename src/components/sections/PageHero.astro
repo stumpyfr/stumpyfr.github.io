@@ -1,0 +1,81 @@
+---
+interface Props {
+  eyebrow?: string;
+  title: string;
+  copy: string;
+  image?: string;
+  alt?: string;
+}
+
+const { eyebrow, title, copy, image, alt = '' } = Astro.props;
+---
+
+<section class="page-hero">
+  <div class:list={['container', 'page-hero-grid', { 'has-image': Boolean(image) }]}>
+    <div class="content">
+      {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+      <h1 class="serif">{title}</h1>
+      <p>{copy}</p>
+    </div>
+    {image && (
+      <div class="image-wrap">
+        <img src={image} alt={alt} width="1448" height="1086" loading="eager" />
+      </div>
+    )}
+  </div>
+</section>
+
+<style>
+  .page-hero {
+    padding-block: 104px 48px;
+  }
+
+  .page-hero-grid {
+    display: grid;
+    gap: 2rem;
+  }
+
+  .has-image {
+    grid-template-columns: minmax(0, 0.9fr) minmax(320px, 0.8fr);
+    align-items: center;
+  }
+
+  .content {
+    display: grid;
+    gap: 1rem;
+    max-width: 780px;
+  }
+
+  h1 {
+    margin: 0;
+    color: var(--color-paper);
+    font-size: clamp(2.25rem, 4.8vw, 4.6rem);
+    line-height: 0.95;
+  }
+
+  p {
+    margin: 0;
+    color: var(--color-fog);
+    font-size: clamp(1.05rem, 2vw, 1.25rem);
+    max-width: 68ch;
+  }
+
+  .image-wrap {
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    border-radius: 24px;
+    box-shadow: var(--shadow-card);
+  }
+
+  img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+
+  @media (max-width: 860px) {
+    .has-image {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

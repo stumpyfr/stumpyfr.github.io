@@ -1,0 +1,306 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Button from '@/components/ui/Button.astro';
+import IconCard from '@/components/ui/IconCard.astro';
+import LargeFeatureCard from '@/components/ui/LargeFeatureCard.astro';
+import SectionHeading from '@/components/ui/SectionHeading.astro';
+import SocialLinks from '@/components/ui/SocialLinks.astro';
+import { externalLinkAttrs, siteConfig } from '@/config/site';
+
+const heroImage =
+  siteConfig.assets.hero[
+    siteConfig.heroVariant as keyof typeof siteConfig.assets.hero
+  ];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: siteConfig.name,
+  url: siteConfig.url,
+  sameAs: [
+    siteConfig.links.linkedin,
+    siteConfig.links.github,
+    siteConfig.links.arkhamAdvisory,
+    siteConfig.links.arkhamTimes,
+  ],
+};
+---
+
+<BaseLayout jsonLd={jsonLd}>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">INDEPENDENT ADVICE</p>
+        <h1 class="serif">
+          Independent advisor on
+          <span class="cloud">architecture</span>,
+          <span class="blue">data platforms</span>,
+          <span class="cyan">AI</span>, and
+          <span class="gold">transformation</span>.
+        </h1>
+        <p>
+          I help organisations make better technology decisions when systems are
+          complex and the stakes are real.
+        </p>
+        <div class="hero-actions">
+          <Button href={siteConfig.links.arkhamAdvisory} external>Work with me</Button>
+          <Button href={siteConfig.links.arkhamTimes} variant="secondary" external>
+            Read Arkham Times
+          </Button>
+        </div>
+      </div>
+      <div class="hero-visual" aria-label="Abstract constellation systems visual">
+        <img
+          src={heroImage}
+          alt="Dark constellation-style network visual representing architecture and systems thinking."
+          width="1672"
+          height="941"
+          loading="eager"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="section what">
+    <div class="container">
+      <SectionHeading
+        eyebrow="What I Do"
+        title="Senior judgment for complex systems."
+        copy="Architecture, platforms, AI, and transformation work need clarity before momentum. These are the lenses I bring to high-stakes decisions."
+      />
+      <div class="card-grid">
+        <IconCard title="Architecture" copy="Designing robust systems that scale and endure." href="/projects" accent="gold" icon="A" />
+        <IconCard title="Platforms" copy="Building platforms that create real leverage." href="/projects" accent="blue" icon="P" />
+        <IconCard title="AI" copy="Applied AI strategy for measurable impact." href="/projects" accent="cyan" icon="AI" />
+        <IconCard title="Transformation" copy="Guiding change in complex organisations." href="/about" accent="gold" icon="T" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section writing">
+    <div class="container writing-grid">
+      <div>
+        <p class="eyebrow">Writing</p>
+        <h2 class="serif">Writing at The Arkham Times</h2>
+      </div>
+      <div class="writing-copy">
+        <p>
+          Longer-form field notes on architecture, AI, transformation, and how
+          complex systems actually behave.
+        </p>
+        <Button href={siteConfig.links.arkhamTimes} external>Read the field notes</Button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section previews">
+    <div class="container preview-stack">
+      <LargeFeatureCard
+        eyebrow="SPEAKING & MEDIA"
+        title="Ideas, interviews, and perspectives."
+        copy="Conversations about technology, decision-making, and what matters."
+        href="/speaking-media"
+        image={siteConfig.assets.speakingMedia}
+        alt="A dark stage-like media visual for speaking and interviews."
+      >
+        <span slot="cta">See speaking & media</span>
+      </LargeFeatureCard>
+      <LargeFeatureCard
+        eyebrow="PROJECTS"
+        title="Selected work across domains."
+        copy="Advisory engagements and initiatives focused on complex systems."
+        href="/projects"
+        image={siteConfig.assets.projects}
+        alt="A dark landscape visual representing technical projects and systems."
+      >
+        <span slot="cta">Explore projects</span>
+      </LargeFeatureCard>
+    </div>
+  </section>
+
+  <section class="section cta">
+    <div class="container cta-box surface texture">
+      <div>
+        <p class="eyebrow">Work With Me</p>
+        <h2 class="serif">Need senior judgment on a complex technology decision?</h2>
+        <p>I advise on architecture, data platforms, AI, and transformation through Arkham Advisory.</p>
+      </div>
+      <Button href={siteConfig.links.arkhamAdvisory} external>Visit Arkham Advisory</Button>
+    </div>
+  </section>
+
+  <section class="section contact-preview">
+    <div class="container contact-grid">
+      <div>
+        <p class="eyebrow">Contact</p>
+        <h2 class="serif">Best first contact is by email or LinkedIn.</h2>
+      </div>
+      <div class="contact-links">
+        <a href={`mailto:${siteConfig.links.email}`} {...externalLinkAttrs()}>{siteConfig.links.email}</a>
+        <SocialLinks />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    padding-block: 92px 72px;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.95fr) minmax(420px, 1.05fr);
+    align-items: center;
+    gap: clamp(2rem, 5vw, 5rem);
+  }
+
+  .hero-copy {
+    display: grid;
+    gap: 1.25rem;
+  }
+
+  h1 {
+    margin: 0;
+    color: var(--color-paper);
+    font-size: clamp(2.35rem, 4.6vw, 4.8rem);
+    line-height: 0.95;
+  }
+
+  .hero-copy p:not(.eyebrow),
+  .writing-copy p,
+  .cta-box p,
+  .contact-grid p {
+    margin: 0;
+    max-width: 62ch;
+    color: var(--color-fog);
+    font-size: 1.1rem;
+  }
+
+  .hero-actions,
+  .contact-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9rem;
+    align-items: center;
+  }
+
+  .hero-visual {
+    position: relative;
+    overflow: hidden;
+    border-radius: 28px;
+    isolation: isolate;
+  }
+
+  .hero-visual::after {
+    position: absolute;
+    inset: 0;
+    content: "";
+    pointer-events: none;
+    background: radial-gradient(circle at 65% 45%, transparent 0 32%, rgba(11, 16, 32, 0.42) 76%);
+  }
+
+  .hero-visual img {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 28px 80px rgba(34, 211, 238, 0.12));
+  }
+
+  .cloud {
+    color: var(--color-cloud);
+  }
+
+  .blue {
+    color: var(--color-signal-blue);
+  }
+
+  .cyan {
+    color: var(--color-electric-cyan);
+  }
+
+  .gold {
+    color: var(--color-muted-gold);
+  }
+
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .writing-grid,
+  .contact-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(300px, 0.7fr);
+    gap: 2rem;
+    align-items: end;
+  }
+
+  h2 {
+    margin: 0;
+    color: var(--color-paper);
+    font-size: clamp(1.4rem, 2.5vw, 2.2rem);
+    line-height: 1.15;
+  }
+
+  .writing-copy {
+    display: grid;
+    justify-items: start;
+    gap: 1.2rem;
+  }
+
+  .preview-stack {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .cta-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    border-radius: 24px;
+    padding: clamp(1.5rem, 4vw, 3rem);
+  }
+
+  .cta-box > div {
+    display: grid;
+    gap: 0.8rem;
+  }
+
+  .contact-links a {
+    color: var(--color-electric-cyan);
+    font-weight: 800;
+  }
+
+  @media (max-width: 1040px) {
+    .hero-grid,
+    .writing-grid,
+    .contact-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .hero-visual {
+      max-width: 820px;
+    }
+
+    .card-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 640px) {
+    .hero {
+      padding-block: 64px 36px;
+    }
+
+    .card-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .cta-box {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+  }
+</style>

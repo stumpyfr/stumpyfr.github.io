@@ -1,0 +1,91 @@
+---
+import PageHero from '@/components/sections/PageHero.astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { externalLinkAttrs, siteConfig } from '@/config/site';
+
+const methods = [
+  {
+    label: 'LinkedIn',
+    value: 'Professional profile',
+    href: siteConfig.links.linkedin,
+  },
+  {
+    label: 'GitHub',
+    value: 'Open-source and technical presence',
+    href: siteConfig.links.github,
+  },
+  {
+    label: 'Arkham Advisory',
+    value: 'Advisory work',
+    href: siteConfig.links.arkhamAdvisory,
+  },
+];
+---
+
+<BaseLayout title="Contact" canonicalPath="/contact">
+  <PageHero
+    title="Contact"
+    copy="If you would like to discuss advisory work, collaboration, or speaking, feel free to get in touch."
+    image={siteConfig.assets.hero['hero-variant-02-layered-systems']}
+    alt="Abstract layered systems visual."
+  />
+
+  <section class="section">
+    <div class="container method-grid">
+      {methods.map((method) => (
+        <a class="method surface" href={method.href} {...externalLinkAttrs()}>
+          <span>{method.label}</span>
+          <strong>{method.value}</strong>
+        </a>
+      ))}
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .method-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .method {
+    display: grid;
+    min-height: 190px;
+    align-content: space-between;
+    gap: 1rem;
+    border-radius: 24px;
+    padding: 1.25rem;
+    transition: transform 180ms ease, border-color 180ms ease;
+  }
+
+  .method:hover {
+    transform: translateY(-4px);
+    border-color: rgba(34, 211, 238, 0.45);
+  }
+
+  span {
+    color: var(--color-electric-cyan);
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  strong {
+    color: var(--color-paper);
+    overflow-wrap: anywhere;
+  }
+
+  @media (max-width: 940px) {
+    .method-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 620px) {
+    .method-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
