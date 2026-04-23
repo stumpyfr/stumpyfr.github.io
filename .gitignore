@@ -1,5 +1,5 @@
-_site
-.sass-cache
-.jekyll-cache
-.jekyll-metadata
-vendor
+
+# Beads / Dolt files (added by bd init)
+.dolt/
+*.db
+.beads-credential-key

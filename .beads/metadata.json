@@ -1,0 +1,7 @@
+{
+  "database": "dolt",
+  "backend": "dolt",
+  "dolt_mode": "server",
+  "dolt_database": "stumpyfr.github.io",
+  "project_id": "287b2e63-e8f7-4db7-bdf8-9bae77f71fed"
+}
